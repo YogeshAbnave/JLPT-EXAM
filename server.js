@@ -7,9 +7,9 @@ const cors = require('cors')
 // const mongoose = require('mongoose');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri  = 'mongodb://localhost:27017/FoodDataBase';
-// const uri = 'mongodb+srv://JLPT-EXAM:Jlpt@1234@cluster0.783otra.mongodb.net/';
+// const uri = 'mongodb+srv://JLPT-EXAM:Jlpt%401234@cluster0.bi0xw4z.mongodb.net/';
 
-const uri  = 'mongodb+srv://JLPT-EXAM:Jlpt@1234@cluster0.bi0xw4z.mongodb.net/?retryWrites=true&w=majority';
+const uri  = 'mongodb+srv://JLPT-EXAM:Jlpt%401234@cluster0.bi0xw4z.mongodb.net/?retryWrites=true&w=majority';
 
 const PORT = 8080;
 const Tour = require('./model/dataModel');

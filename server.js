@@ -5,7 +5,9 @@ const app = express();
 var bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose');
-const DB = 'mongodb://localhost:27017/FoodDataBase';
+// const DB = 'mongodb://localhost:27017/FoodDataBase';
+const DB = 'mongodb+srv://JLPT-EXAM:Jlpt@1234@cluster0.783otra.mongodb.net/?retryWrites=true&w=majority';
+
 const PORT = 8080;
 const Tour = require('./model/dataModel');
 // app.use(express.json());
@@ -22,6 +24,7 @@ app.use(cors())
 mongoose.connect(DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    // strictQuery: true
 
 })
 .then(() => console.log('MongoDB connection established.'))

@@ -4,9 +4,12 @@ const app = express();
 // const fs = require('fs')
 var bodyParser = require('body-parser')
 const cors = require('cors')
-const mongoose = require('mongoose');
-// const DB = 'mongodb://localhost:27017/FoodDataBase';
-const DB = 'mongodb+srv://JLPT-EXAM:Jlpt@1234@cluster0.783otra.mongodb.net/?retryWrites=true&w=majority';
+// const mongoose = require('mongoose');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri  = 'mongodb://localhost:27017/FoodDataBase';
+// const uri = 'mongodb+srv://JLPT-EXAM:Jlpt@1234@cluster0.783otra.mongodb.net/';
+
+const uri  = 'mongodb+srv://JLPT-EXAM:Jlpt@1234@cluster0.bi0xw4z.mongodb.net/?retryWrites=true&w=majority';
 
 const PORT = 8080;
 const Tour = require('./model/dataModel');
@@ -21,16 +24,26 @@ app.use(cors())
 
 // const toure = JSON.parse(fs.readFileSync(`${__dirname}/store/data.json`))
 
-mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    // strictQuery: true
-
-})
-.then(() => console.log('MongoDB connection established.'))
-.catch((error) => console.error("MongoDB connection failed:", error.message));
-
-
+const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
+  async function run() {
+    try {
+      // Connect the client to the server	(optional starting in v4.7)
+      await client.connect();
+      // Send a ping to confirm a successful connection
+      await client.db("admin").command({ ping: 1 });
+      console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await client.close();
+    }
+  }
+  run().catch(console.dir);
 
 
 

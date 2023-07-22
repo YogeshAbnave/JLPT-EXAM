@@ -61,6 +61,13 @@ app.get('/',async(req,res)=> {
           });
     }
 });
+
+app.get('/api',async(req,res)=> {
+  return res.status(200).json({
+    status: 'Fail to get data',
+    data:"Data can not find"
+  });
+});
    
 // app.get('/search/:searchSection',async(req,res)=> {
 //     var param = req.params.searchSection;
